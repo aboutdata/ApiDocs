@@ -152,6 +152,18 @@
             <version>1.2.4</version>
         </dependency>
         
+         <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!-- mysql5.1.30 驱动包 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.30</version>
+        </dependency>
+        
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

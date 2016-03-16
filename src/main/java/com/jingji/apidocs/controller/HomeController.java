@@ -6,7 +6,9 @@
 package com.jingji.apidocs.controller;
 
 import com.jingji.apidocs.dao.SequenceMapper;
+import com.jingji.apidocs.domain.Category;
 import com.jingji.apidocs.domain.Sequence;
+import com.jingji.apidocs.service.CategoryService;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,13 +27,16 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @Resource
-    private SequenceMapper sequenceMapper;
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home1(Model model) {
-        Sequence sq = sequenceMapper.getSequenceByName("ordernum");
-        logger.info("#####Sequence {}",sq);
-        
+        ///Sequence sq = sequenceMapper.getSequenceByName("ordernum");
+        Category category = new Category();
+        category.setName("测试api");
+        categoryService.save(category);
+        logger.info("#####Sequence {}", category);
+
         return "index";
     }
 }
