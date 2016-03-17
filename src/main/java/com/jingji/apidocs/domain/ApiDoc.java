@@ -10,7 +10,7 @@ public class ApiDoc implements Serializable {
 
     private String id;// ID
     private String name;
-    private String categoryId;
+    private int categoryId;
     private String description;
 
     private Date createDate;// 创建日期
@@ -32,11 +32,11 @@ public class ApiDoc implements Serializable {
         this.name = name;
     }
 
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 

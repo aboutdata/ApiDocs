@@ -4,5 +4,14 @@
 <mapper namespace="com.jingji.apidocs.dao.ApiDocMapper">
   <cache />
   
-  
+  <insert id="save" parameterType="ApiDoc" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO apidoc
+        (
+        name,category_id,description,createDate,modifyDate
+        )
+        VALUES
+        (
+        #{name},#{categoryId},#{description},now(),now()
+        )
+    </insert>
 </mapper>

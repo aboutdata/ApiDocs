@@ -8,6 +8,8 @@ package com.jingji.apidocs.controller;
 import com.jingji.apidocs.dao.SequenceMapper;
 import com.jingji.apidocs.domain.Category;
 import com.jingji.apidocs.domain.Sequence;
+import com.jingji.apidocs.rest.response.ApiDocModel;
+import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -29,13 +31,18 @@ public class HomeController {
     @Resource
     private CategoryService categoryService;
 
+    @Resource
+    private ApiDocService apiDocService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home1(Model model) {
         ///Sequence sq = sequenceMapper.getSequenceByName("ordernum");
-        Category category = new Category();
-        category.setName("测试api");
-        categoryService.save(category);
-        logger.info("#####Sequence {}", category);
+//        Category category = new Category();
+//        category.setName("测试api");
+//        categoryService.save(category);
+//      
+        apiDocService.addApiDoc(new ApiDocModel());
+//        logger.info("#####Sequence {}", category);
 
         return "index";
     }
