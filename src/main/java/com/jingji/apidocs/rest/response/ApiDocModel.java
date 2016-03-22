@@ -7,13 +7,14 @@ package com.jingji.apidocs.rest.response;
 
 import com.jingji.apidocs.domain.RequestParameter;
 import com.jingji.apidocs.domain.ResponseParameter;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Administrator
  */
-public class ApiDocModel {
+public class ApiDocModel implements Serializable{
 
     private String id;// ID
     private String name;

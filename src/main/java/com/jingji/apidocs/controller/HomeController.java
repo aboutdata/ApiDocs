@@ -11,6 +11,7 @@ import com.jingji.apidocs.domain.Sequence;
 import com.jingji.apidocs.rest.response.ApiDocModel;
 import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
+import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +42,10 @@ public class HomeController {
 //        category.setName("测试api");
 //        categoryService.save(category);
 //      
-        apiDocService.addApiDoc(new ApiDocModel());
+        //apiDocService.addApiDoc(new ApiDocModel());
 //        logger.info("#####Sequence {}", category);
-
+        List<ApiDocModel> list = apiDocService.findByPage();
+        logger.info("list{}",list.size());
         return "index";
     }
 }

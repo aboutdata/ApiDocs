@@ -6,6 +6,8 @@
 package com.jingji.apidocs.dao;
 
 import com.jingji.apidocs.domain.ApiDoc;
+import com.jingji.apidocs.rest.response.ApiDocModel;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,6 @@ import com.jingji.apidocs.domain.ApiDoc;
 public interface ApiDocMapper {
 
     public void save(ApiDoc apiDoc);
+    
+    public List<ApiDocModel> findByPage();
 }

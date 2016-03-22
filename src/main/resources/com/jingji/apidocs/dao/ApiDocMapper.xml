@@ -2,10 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jingji.apidocs.dao.ApiDocMapper">
-  <cache />
+    
+    <resultMap id="requestParameterResultMap" type="com.jingji.apidocs.domain.RequestParameter">
+        <result property="apiId" column="api_id"></result>
+        <result property="name" column="request_name"></result>
+        <result property="type" column="request_type"></result>    
+        <result property="description" column="request_description"></result>    
+    </resultMap>
+    
+    <resultMap id="apiDocModelResultMap" type="com.jingji.apidocs.rest.response.ApiDocModel">
+        <id property="id" column="id"></id>
+        <result property="name" column="api_name"></result>
+        <result property="categoryId" column="category_id"></result>
+        <result property="description" column="description"></result>    
+        <association property="requestParameters" resultMap="requestParameterResultMap"></association>
+    </resultMap>
   
-  <insert id="save" parameterType="ApiDoc" useGeneratedKeys="true" keyProperty="id">
-      INSERT INTO apidoc
+    <cache />
+  
+    <insert id="save" parameterType="ApiDoc" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO apidoc
         (
         name,category_id,description,createDate,modifyDate
         )
@@ -14,4 +30,13 @@
         #{name},#{categoryId},#{description},now(),now()
         )
     </insert>
+    
+    <select id="findByPage" resultMap="apiDocModelResultMap">
+        SELECT
+        api.id id,api.name api_name,api.category_id category_id,api.description description,
+        request.api_id,request.name request_name,request.type request_type,request.description request_description
+        FROM
+        apidoc api
+        LEFT JOIN request_parameter request ON request.api_id = api.id
+    </select>
 </mapper>

@@ -15,6 +15,7 @@ import com.jingji.apidocs.domain.ResponseParameter;
 import com.jingji.apidocs.rest.response.ApiDocModel;
 import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
+import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,10 @@ public class ApiDocServiceImpl implements ApiDocService {
 
     @Resource
     private RequestParameterMapper requestParameterMapper;
-    
+
     @Resource
     private ResponseParameterMapper responseParameterMapper;
-    
-    
+
     @Override
     public void addApiDoc(ApiDocModel model) {
         //保存这个apiddoc 
@@ -48,22 +48,27 @@ public class ApiDocServiceImpl implements ApiDocService {
 
         apiDocMapper.save(apiDoc);
         //保存参数信息
-        RequestParameter request=new RequestParameter();
+        RequestParameter request = new RequestParameter();
         request.setApiId(apiDoc.getId());
         request.setName("用户名");
         request.setType("String");
         request.setDescription("参数描述");
-        
+
         requestParameterMapper.save(request);
-        
-        ResponseParameter response=new ResponseParameter();
+
+        ResponseParameter response = new ResponseParameter();
         response.setApiId(apiDoc.getId());
         response.setName("用户名");
         response.setType("String");
         response.setDescription("参数描述");
-        
-       responseParameterMapper.save(response);
-        
+
+        responseParameterMapper.save(response);
+
+    }
+    
+    @Override
+    public List<ApiDocModel> findByPage() {
+        return apiDocMapper.findByPage();
     }
 
 }
