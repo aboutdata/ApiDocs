@@ -14,7 +14,6 @@ import com.jingji.apidocs.domain.RequestParameter;
 import com.jingji.apidocs.domain.ResponseParameter;
 import com.jingji.apidocs.rest.response.ApiDocModel;
 import com.jingji.apidocs.service.ApiDocService;
-import com.jingji.apidocs.service.CategoryService;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -65,10 +64,15 @@ public class ApiDocServiceImpl implements ApiDocService {
         responseParameterMapper.save(response);
 
     }
-    
+
     @Override
     public List<ApiDocModel> findByPage() {
         return apiDocMapper.findByPage();
+    }
+
+    @Override
+    public ApiDocModel findById(int id) {
+        return apiDocMapper.findById(id);
     }
 
 }

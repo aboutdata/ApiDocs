@@ -39,4 +39,15 @@
         apidoc api
         LEFT JOIN request_parameter request ON request.api_id = api.id
     </select>
+    
+    <select id="findById" resultMap="apiDocModelResultMap">
+        SELECT
+        api.id id,api.name api_name,api.category_id category_id,api.description description,
+        request.api_id,request.name request_name,request.type request_type,request.description request_description
+        FROM
+        apidoc api
+        LEFT JOIN request_parameter request ON request.api_id = api.id
+        WHERE 
+        api.id=#{id}
+    </select>
 </mapper>

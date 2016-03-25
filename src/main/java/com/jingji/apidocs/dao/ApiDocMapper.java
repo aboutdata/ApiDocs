@@ -16,6 +16,9 @@ import java.util.List;
 public interface ApiDocMapper {
 
     public void save(ApiDoc apiDoc);
-    
+
     public List<ApiDocModel> findByPage();
+
+    public ApiDocModel findById(int id);
+
 }

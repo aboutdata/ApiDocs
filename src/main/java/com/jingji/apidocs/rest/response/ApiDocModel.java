@@ -71,6 +71,10 @@ public class ApiDocModel implements Serializable{
     public void setResponseParameters(List<ResponseParameter> responseParameters) {
         this.responseParameters = responseParameters;
     }
-    
+
+    @Override
+    public String toString() {
+        return "ApiDocModel{" + "id=" + id + ", name=" + name + ", categoryId=" + categoryId + ", description=" + description + ", requestParameters=" + requestParameters + ", responseParameters=" + responseParameters + '}';
+    }
     
 }
