@@ -75,4 +75,8 @@ public class ApiDocServiceImpl implements ApiDocService {
         return apiDocMapper.findById(id);
     }
 
+    
+    public List<ApiDocModel> findByCategoryId(int categoryId){
+        return apiDocMapper.findByCategoryId(categoryId);
+    }
 }

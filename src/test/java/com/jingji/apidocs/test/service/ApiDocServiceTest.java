@@ -42,4 +42,12 @@ public class ApiDocServiceTest {
         LOGGER.info("result {}", result);
 
     }
+
+    //@Test
+    public void findByCategoryId() {
+        List<ApiDocModel> list = apiDocService.findByCategoryId(2);
+        LOGGER.info("result {}", list.size());
+
+    }
+
 }

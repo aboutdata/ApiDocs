@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jingji.apidocs.controller;
 
 import com.jingji.apidocs.rest.response.ApiDocModel;
@@ -14,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Administrator
  */
-
 @Controller
 @RequestMapping(value = "/docs")
 public class ApiDocController {
+
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @Resource
@@ -34,9 +30,16 @@ public class ApiDocController {
     private ApiDocService apiDocService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model) {
-        List<ApiDocModel> list = apiDocService.findByPage();
-        logger.info("list{}",list.size());
-        return "index";
+    public String list(int categoryId, Model model) {
+        List<ApiDocModel> list = apiDocService.findByCategoryId(categoryId);
+        logger.info("list{}", list.size());
+        return "list";
+    }
+
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String details(@PathVariable("id") int id, Model model) {
+        ApiDocModel apiDoc = apiDocService.findById(id);
+        model.addAttribute("apiDoc", apiDoc);
+        return "/docs/details";
     }
 }

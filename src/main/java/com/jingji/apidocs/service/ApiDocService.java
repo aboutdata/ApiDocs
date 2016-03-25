@@ -12,6 +12,8 @@ public interface ApiDocService {
     public void addApiDoc(ApiDocModel model);
 
     public List<ApiDocModel> findByPage();
-    
+
     public ApiDocModel findById(int id);
+
+    public List<ApiDocModel> findByCategoryId(int categoryId);
 }
