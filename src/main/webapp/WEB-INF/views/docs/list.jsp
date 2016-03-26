@@ -46,14 +46,17 @@
     <section id="feed">
         <section class="vbox">
             <section class="scrollable bg-light lter" data-spy="scroll" data-target=".nav-primary">
-                <section  id="docs">
+
+                <section  >
                     <div class="clearfix padder">
                         <h3>说明</h3>
                         <h5 class="m-t-lg">该文档仅适用于超神必备意见反馈提模块相关接口说明描述.</h5>
                         <!--接口内容区域-->
-                        <h3 id="isJoined" class="text-success">1 意见反馈提交</h3>
+
+                        <c:forEach items="${list}" var="doc" varStatus="idx">
+                        <h3 id="doc${doc.id}" class="text-success">${idx.index +1} ${doc.name}</h3>
                         <p><strong>描述</strong></p>
-                        <p>用户填写意见信息<p>
+                        <p>${doc.description}<p>
                         <p><strong>请求方法</strong></p>
                         <code>POST /api/v1/feed/save</code>
                         <h4 id="colors" class="m-t-lg">参数说明</h4>
@@ -80,12 +83,14 @@
     }
 ]</pre>
                         <p><strong>返回参数</strong></p>
+                        </c:forEach>
                         <!--接口内容区域//END-->
-
-
                         <!-------------------------很邪恶的分割线-------------------------->
                     </div>
                 </section>
+
+
+
             </section>
         </section>
     </section>
