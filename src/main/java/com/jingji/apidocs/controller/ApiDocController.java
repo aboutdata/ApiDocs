@@ -3,8 +3,10 @@ package com.jingji.apidocs.controller;
 import com.jingji.apidocs.rest.response.ApiDocModel;
 import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
+
 import java.util.List;
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,9 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- *
  * @author Administrator
  */
 @Controller
@@ -30,10 +32,16 @@ public class ApiDocController {
     private ApiDocService apiDocService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(int categoryId, Model model) {
+    public String list(@RequestParam(value = "categoryId",required = false)Integer categoryId, Model model) {
+        logger.info("categoryId {}",categoryId);
+        if (categoryId == null) {
+            categoryId = categoryService.getDefaultCategoryId();
+        }
+
         List<ApiDocModel> list = apiDocService.findByCategoryId(categoryId);
         logger.info("list{}", list.size());
-        return "list";
+        model.addAttribute("list", list);
+        return "/docs/list";
     }
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)

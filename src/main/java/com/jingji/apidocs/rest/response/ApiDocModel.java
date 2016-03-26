@@ -18,7 +18,7 @@ public class ApiDocModel implements Serializable{
 
     private String id;// ID
     private String name;
-    private String categoryId;
+    private int categoryId;
     private String description;
 
     private List<RequestParameter> requestParameters;
@@ -40,11 +40,11 @@ public class ApiDocModel implements Serializable{
         this.name = name;
     }
 
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 

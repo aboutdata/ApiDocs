@@ -17,6 +17,7 @@ import com.jingji.apidocs.service.ApiDocService;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -38,30 +39,25 @@ public class ApiDocServiceImpl implements ApiDocService {
     private ResponseParameterMapper responseParameterMapper;
 
     @Override
+    @Transactional
     public void addApiDoc(ApiDocModel model) {
-        //保存这个apiddoc 
+        //保存这个apiddoc
         ApiDoc apiDoc = new ApiDoc();
-        apiDoc.setCategoryId(2);
-        apiDoc.setName("接口名称");
-        apiDoc.setDescription("描述");
+        apiDoc.setCategoryId(model.getCategoryId());
+        apiDoc.setName(model.getName());
+        apiDoc.setDescription(model.getDescription());
 
         apiDocMapper.save(apiDoc);
         //保存参数信息
-        RequestParameter request = new RequestParameter();
-        request.setApiId(apiDoc.getId());
-        request.setName("用户名");
-        request.setType("String");
-        request.setDescription("参数描述");
+        for(RequestParameter request:model.getRequestParameters()){
+            request.setApiId(apiDoc.getId());
+            requestParameterMapper.save(request);
+        }
 
-        requestParameterMapper.save(request);
-
-        ResponseParameter response = new ResponseParameter();
-        response.setApiId(apiDoc.getId());
-        response.setName("用户名");
-        response.setType("String");
-        response.setDescription("参数描述");
-
-        responseParameterMapper.save(response);
+        for(ResponseParameter response:model.getResponseParameters()){
+            response.setApiId(apiDoc.getId());
+            responseParameterMapper.save(response);
+        }
 
     }
 

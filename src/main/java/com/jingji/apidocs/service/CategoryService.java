@@ -12,6 +12,8 @@ public interface CategoryService {
     public void save(Category category);
 
     public List<Category> findAll();
+
+    public int getDefaultCategoryId();
    
    
 }

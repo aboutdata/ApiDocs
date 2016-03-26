@@ -31,6 +31,6 @@ public class CategoryController {
     public String list(Model model) {
         List<ApiDocModel> list = apiDocService.findByPage();
         logger.info("list{}",list.size());
-        return "index";
+        return "/category/list";
     }
 }

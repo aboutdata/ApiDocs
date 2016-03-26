@@ -5,12 +5,18 @@
  */
 package com.jingji.apidocs.test.service;
 
+import com.jingji.apidocs.domain.ApiDoc;
 import com.jingji.apidocs.domain.Category;
+import com.jingji.apidocs.domain.RequestParameter;
+import com.jingji.apidocs.domain.ResponseParameter;
 import com.jingji.apidocs.rest.response.ApiDocModel;
 import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,7 +25,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- *
  * @author Administrator
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -50,4 +55,36 @@ public class ApiDocServiceTest {
 
     }
 
+   // @Test
+    public void save() {
+        //保存这个apiddoc
+
+        ApiDocModel apiDoc = new ApiDocModel();
+//        ApiDoc apiDoc = new ApiDoc();
+        apiDoc.setCategoryId(1);
+        apiDoc.setName("接口名称");
+        apiDoc.setDescription("描述");
+
+        //保存参数信息
+        RequestParameter request = new RequestParameter();
+        request.setName("用户名");
+        request.setType("String");
+        request.setDescription("参数描述");
+
+        ResponseParameter response = new ResponseParameter();
+
+        response.setName("用户名");
+        response.setType("String");
+        response.setDescription("参数描述");
+
+        List<RequestParameter> requests = new ArrayList<RequestParameter>();
+        requests.add(request);
+        apiDoc.setRequestParameters(requests);
+
+        List<ResponseParameter> responses = new ArrayList<ResponseParameter>();
+        responses.add(response);
+        apiDoc.setResponseParameters(responses);
+
+        apiDocService.addApiDoc(apiDoc);
+    }
 }
