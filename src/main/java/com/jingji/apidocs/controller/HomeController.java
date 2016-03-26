@@ -13,6 +13,7 @@ import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -36,16 +37,17 @@ public class HomeController {
     private ApiDocService apiDocService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home1(Model model) {
+    public String home1(HttpServletRequest request,Model model) {
+          logger.info("request.getQueryString {}",request.getQueryString());
+          logger.info("request.getRequestURI {}",request.getRequestURI());
         ///Sequence sq = sequenceMapper.getSequenceByName("ordernum");
-//        Category category = new Category();
-//        category.setName("测试api");
-//        categoryService.save(category);
-//      
-        //apiDocService.addApiDoc(new ApiDocModel());
-//        logger.info("#####Sequence {}", category);
-        List<ApiDocModel> list = apiDocService.findByPage();
-        logger.info("list{}",list.size());
+        //        Category category = new Category();
+        //        category.setName("测试api");
+        //        categoryService.save(category);
+        //        apiDocService.addApiDoc(new ApiDocModel());
+        //        logger.info("#####Sequence {}", category);
+        //List<ApiDocModel> list = apiDocService.findByPage();
+        //logger.info("list{}",list.size());
         return "index";
     }
 }
