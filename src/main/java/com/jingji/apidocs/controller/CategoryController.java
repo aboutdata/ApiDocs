@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/category")
 public class CategoryController {
+
     private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     @Resource
@@ -30,7 +31,9 @@ public class CategoryController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
         List<ApiDocModel> list = apiDocService.findByPage();
-        logger.info("list{}",list.size());
+
+        model.addAttribute("list", list);
+        logger.info("list{}", list.size());
         return "/category/list";
     }
 }
