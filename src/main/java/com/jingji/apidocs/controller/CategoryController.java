@@ -1,5 +1,6 @@
 package com.jingji.apidocs.controller;
 
+import com.jingji.apidocs.domain.Category;
 import com.jingji.apidocs.rest.response.ApiDocModel;
 import com.jingji.apidocs.service.ApiDocService;
 import com.jingji.apidocs.service.CategoryService;
@@ -30,7 +31,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-        List<ApiDocModel> list = apiDocService.findByPage();
+        List<Category> list = categoryService.findAll();
 
         model.addAttribute("list", list);
         logger.info("list{}", list.size());
