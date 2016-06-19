@@ -4,7 +4,7 @@
 <html lang="en" class="app">
     <head>
         <meta charset="utf-8"/>
-        <title>超神必备接口说明文档</title>
+        <title>京东金融接口说明文档</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/bootstrap.css" type="text/css"/>
@@ -50,7 +50,7 @@
                         <section  >
                             <div class="clearfix padder">
                                 <h3>说明</h3>
-                                <h5 class="m-t-lg">该文档仅适用于超神必备意见反馈提模块相关接口说明描述.</h5>
+                                <h5 class="m-t-lg">该文档仅适用于京东金融</h5>
                                 <!--接口内容区域-->
 
                                 <c:forEach items="${list}" var="doc" varStatus="idx">
