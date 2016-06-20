@@ -5,19 +5,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>京东金融接口说明文档</title>
-        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/bootstrap.css" type="text/css"/>
-        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/animate.css" type="text/css"/>
-        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/font-awesome.min.css" type="text/css"/>
-        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/simple-line-icons.css" type="text/css"/>
-        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/font.css" type="text/css"/>
-        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/assets/css/app.css" type="text/css"/>
-        <!--[if lt IE 9]>
-        <script src="${pageContext.servletContext.contextPath}/assets/js/ie/html5shiv.js"></script>
-        <script src="${pageContext.servletContext.contextPath}/assets/js/ie/respond.min.js"></script>
-        <script src="${pageContext.servletContext.contextPath}/assets/js/ie/excanvas.js"></script>
-        <![endif]-->
+        <jsp:include page="/WEB-INF/views/commons/header.jsp"/>
     </head>
     <body>
         <section class="hbox stretch">
@@ -33,10 +21,14 @@
                     <section class="scrollable">
                         <nav class="nav-primary hidden-xs nav-docs">
                             <ul class="nav">
-                                <li class="dropdown-header b-b b-light"><em>意见反馈</em></li>
-                                    <c:forEach items="${list}" var="doc">
-                                    <li><a href="#doc${doc.id}">${doc.name}</a></li>
-                                    </c:forEach>
+                                <li class="dropdown-header b-b b-light">
+                                    <em>意见反馈</em>
+                                </li>
+                                <c:forEach items="${list}" var="doc">
+                                    <li>
+                                        <a href="#doc${doc.id}">${doc.name}</a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </nav>
                     </section>
@@ -52,7 +44,6 @@
                                 <h3>说明</h3>
                                 <h5 class="m-t-lg">该文档仅适用于京东金融</h5>
                                 <!--接口内容区域-->
-
                                 <c:forEach items="${list}" var="doc" varStatus="idx">
                                     <h3 id="doc${doc.id}" class="text-success">${idx.index +1} ${doc.name}</h3>
                                     <p><strong>描述</strong></p>
@@ -69,11 +60,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>content</td>
-                                                <td>String</td>
-                                                <td>意见反馈的内容</td>
-                                            </tr>
+                                            <c:forEach items="${doc.requestParameters}" var="requestParameter">
+                                                <tr>
+                                                    <td>${requestParameter.name}</td>
+                                                    <td>${requestParameter.type}</td>
+                                                    <td>${requestParameter.description}</td>
+                                                </tr> 
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                     <p><strong>返回结果</strong>：(JSON实例)</p>
@@ -83,14 +76,29 @@
     }
 ]</pre>
                                     <p><strong>返回参数</strong></p>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:70px;">参数</th>
+                                                <th style="width:70px;">类型</th>
+                                                <th>描述</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="${doc.responseParameters}" var="responseParameter">
+                                                <tr>
+                                                    <td>${responseParameter.name}</td>
+                                                    <td>${responseParameter.type}</td>
+                                                    <td>${responseParameter.description}</td>
+                                                </tr> 
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </c:forEach>
                                 <!--接口内容区域//END-->
                                 <!-------------------------很邪恶的分割线-------------------------->
                             </div>
                         </section>
-
-
-
                     </section>
                 </section>
             </section>

@@ -4,10 +4,17 @@
 <mapper namespace="com.jd.apidocs.dao.ApiDocMapper">
     
     <resultMap id="requestParameterResultMap" type="com.jd.apidocs.domain.RequestParameter">
-        <result property="apiId" column="api_id"></result>
+        <result property="apiId" column="request_api_id"></result>
         <result property="name" column="request_name"></result>
         <result property="type" column="request_type"></result>    
         <result property="description" column="request_description"></result>    
+    </resultMap>
+    
+    <resultMap id="responseParameterResultMap" type="com.jd.apidocs.domain.ResponseParameter">
+        <result property="apiId" column="response_api_id"></result>
+        <result property="name" column="response_name"></result>
+        <result property="type" column="response_type"></result>    
+        <result property="description" column="response_description"></result>    
     </resultMap>
     
     <resultMap id="apiDocModelResultMap" type="com.jd.apidocs.rest.response.ApiDocModel">
@@ -16,6 +23,7 @@
         <result property="categoryId" column="category_id"></result>
         <result property="description" column="description"></result>    
         <association property="requestParameters" resultMap="requestParameterResultMap"></association>
+        <association property="responseParameters" resultMap="responseParameterResultMap"></association>
     </resultMap>
   
     <cache />
@@ -43,10 +51,12 @@
     <select id="findById" resultMap="apiDocModelResultMap">
         SELECT
         api.id id,api.name api_name,api.category_id category_id,api.description description,
-        request.api_id,request.name request_name,request.type request_type,request.description request_description
+        request.api_id request_api_id ,request.name request_name,request.type request_type,request.description request_description,
+        response.api_id response_api_id,response.name response_name,response.type response_type,response.description response_description
         FROM
         apidoc api
         LEFT JOIN request_parameter request ON request.api_id = api.id
+        LEFT JOIN response_parameter response ON response.api_id = api.id
         WHERE 
         api.id=#{id}
     </select>
@@ -54,10 +64,12 @@
     <select id="findByCategoryId" resultMap="apiDocModelResultMap">
         SELECT
         api.id id,api.name api_name,api.category_id category_id,api.description description,
-        request.api_id,request.name request_name,request.type request_type,request.description request_description
+        request.api_id request_api_id ,request.name request_name,request.type request_type,request.description request_description,
+        response.api_id response_api_id,response.name response_name,response.type response_type,response.description response_description
         FROM
         apidoc api
         LEFT JOIN request_parameter request ON request.api_id = api.id
+        LEFT JOIN response_parameter response ON response.api_id = api.id
         WHERE 
         api.category_id=#{categoryId}
     </select>
