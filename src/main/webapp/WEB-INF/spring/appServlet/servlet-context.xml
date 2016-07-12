@@ -13,5 +13,5 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<context:component-scan base-package="com.jd.apidocs.controller" />
+	<context:component-scan base-package="com.jdz.apidocs.controller" />
 </beans:beans>
