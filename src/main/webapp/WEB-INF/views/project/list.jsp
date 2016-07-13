@@ -29,7 +29,7 @@
             </header>
             <form action="index.html">
                 <c:forEach items="${list}" var="project">
-                    <a href="${pageContext.servletContext.contextPath}/project/details?projectId=${project.id}" class="btn btn-lg btn-info btn-block btn-rounded">${project.name}</a>
+                    <a href="${pageContext.servletContext.contextPath}/project/details/${project.id}" class="btn btn-lg btn-info btn-block btn-rounded">${project.name}</a>
                 </c:forEach>
             </form>
         </section>
