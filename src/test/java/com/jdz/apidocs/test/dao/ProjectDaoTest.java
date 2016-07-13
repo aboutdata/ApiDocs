@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by wangkun23 on 2016/7/13.
@@ -32,7 +33,13 @@ public class ProjectDaoTest extends TestBase {
     //@Test
     public void findById() {
         Project project = projectMapper.findById(6L);
-        LOGGER.info("########## {}",project);
+        LOGGER.info("########## {}", project);
+    }
+
+    @Test
+    public void findByLikeName() {
+        List<Project> list = projectMapper.findByLikeName("test");
+        LOGGER.info("########## {}", list.size());
     }
 
 }

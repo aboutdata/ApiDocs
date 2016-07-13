@@ -12,4 +12,6 @@ public interface CategoryMapper {
     public void save(Category ctegory);
 
     public List<Category> findAll();
+
+    public List<Category> findByProjectId(Long projectId);
 }

@@ -21,5 +21,14 @@
         FROM
         category
     </select>
+
+    <select id="findByProjectId" resultType="Category">
+        SELECT
+        *
+        FROM
+        category
+        WHERE
+        projectId=#{projectId}
+    </select>
   
 </mapper>

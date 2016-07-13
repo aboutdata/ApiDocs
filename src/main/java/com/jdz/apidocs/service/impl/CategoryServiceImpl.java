@@ -38,4 +38,9 @@ public class CategoryServiceImpl implements CategoryService {
     public int getDefaultCategoryId() {
         return 1;
     }
+
+    @Override
+    public List<Category> findByProjectId(Long projectId) {
+        return categoryMapper.findByProjectId(projectId);
+    }
 }

@@ -6,6 +6,7 @@ import com.jdz.apidocs.service.ProjectService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by wangkun23 on 2016/7/13.
@@ -24,5 +25,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project findById(Long id) {
         return projectMapper.findById(id);
+    }
+
+    @Override
+    public List<Project> search(String keyword) {
+        return projectMapper.findByLikeName(keyword);
     }
 }

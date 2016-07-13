@@ -34,17 +34,8 @@ public class HomeController {
     private ApiDocService apiDocService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home1(HttpServletRequest request,Model model) {
-          logger.info("request.getQueryString {}",request.getQueryString());
-          logger.info("request.getRequestURI {}",request.getRequestURI());
-        ///Sequence sq = sequenceMapper.getSequenceByName("ordernum");
-        //        Category category = new Category();
-        //        category.setName("测试api");
-        //        categoryService.save(category);
-        //        apiDocService.addApiDoc(new ApiDocModel());
-        //        logger.info("#####Sequence {}", category);
-        //List<ApiDocModel> list = apiDocService.findByPage();
-        //logger.info("list{}",list.size());
+    public String home(HttpServletRequest request,Model model) {
+
         return "index";
     }
 }

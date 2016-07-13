@@ -6,6 +6,7 @@ import com.jdz.apidocs.service.CategoryService;
 import java.util.List;
 import javax.annotation.Resource;
 
+import com.jdz.apidocs.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -17,9 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author Administrator
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/root-context.xml")
-public class CategoryServiceTest {
+public class CategoryServiceTest extends TestBase {
  private static final Logger LOGGER = LoggerFactory.getLogger(CategoryServiceTest.class);
 
     @Resource
@@ -35,5 +34,12 @@ public class CategoryServiceTest {
         List<Category> list = categoryService.findAll();
         LOGGER.info("list {}",list.size());
      
+    }
+
+    @Test
+    public void findByProjectId() {
+        List<Category> list = categoryService.findByProjectId(6L);
+        LOGGER.info("list {}",list.size());
+
     }
 }

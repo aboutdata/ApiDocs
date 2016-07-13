@@ -14,6 +14,6 @@ public interface CategoryService {
     public List<Category> findAll();
 
     public int getDefaultCategoryId();
-   
-   
+
+    public List<Category> findByProjectId(Long projectId);
 }

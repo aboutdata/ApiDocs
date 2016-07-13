@@ -33,4 +33,13 @@
         p.id=#{id}
     </select>
 
+    <select id="findByLikeName" resultMap="project">
+        SELECT
+        p.id id,p.name name,p.description description
+        FROM
+        project p
+        WHERE
+        p.name LIKE CONCAT('%',#{name},'%')
+    </select>
+
 </mapper>
