@@ -194,7 +194,7 @@
                         </connector>
                     </connectors>
                     <webAppConfig>
-                        <contextPath>/</contextPath>
+                        <contextPath>/docs</contextPath>
                     </webAppConfig>
                     <scanIntervalSeconds>5000</scanIntervalSeconds>
                     <stopKey>foo</stopKey>

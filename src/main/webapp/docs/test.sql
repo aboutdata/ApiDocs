@@ -15,6 +15,17 @@ Date: 2016-06-01 14:18:06
 
 SET FOREIGN_KEY_CHECKS=0;
 
+
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(30) NOT NULL,
+  `description` text,
+  `createDate` datetime NOT NULL,
+  `modifyDate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
 -- ----------------------------
 -- Table structure for `apidoc`
 -- ----------------------------
@@ -101,3 +112,6 @@ CREATE TABLE `sequence` (
 -- ----------------------------
 -- Records of sequence
 -- ----------------------------
+
+--新增项目字段
+alter TABLE category add COLUMN projectId int(11) COMMENT "项目id";

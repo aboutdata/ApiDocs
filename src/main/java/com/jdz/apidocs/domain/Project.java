@@ -1,39 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jdz.apidocs.domain;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
- * @author Administrator
+ * Created by wangkun23 on 2016/7/13.
  */
-public class Category implements Serializable {
+public class Project implements Serializable {
 
-    private String id;// ID
-    private Long projectId;
+    private Long id;
     private String name;
+    private String description;
+
     private Date createDate;// 创建日期
     private Date modifyDate;// 修改日期
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
     }
 
     public String getName() {
@@ -42,6 +29,14 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreateDate() {
@@ -62,10 +57,10 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", projectId=" + projectId +
+        return "Project{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", createDate=" + createDate +
                 ", modifyDate=" + modifyDate +
                 '}';
