@@ -38,4 +38,10 @@ public class HomeController {
 
         return "index";
     }
+
+    @RequestMapping(value = "/editor", method = RequestMethod.GET)
+    public String editor(Model model) {
+
+        return "editor";
+    }
 }
