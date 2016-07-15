@@ -9,6 +9,7 @@ import java.util.Date;
 public class ApiDoc implements Serializable {
 
     private String id;// ID
+    private
     private String name;
     private int categoryId;
     private String description;

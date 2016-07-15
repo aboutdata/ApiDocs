@@ -32,8 +32,8 @@ public class ApiDocController {
     private ApiDocService apiDocService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(@RequestParam(value = "categoryId",required = false)Integer categoryId, Model model) {
-        logger.info("categoryId {}",categoryId);
+    public String list(@RequestParam(value = "categoryId", required = false) Integer categoryId, Model model) {
+        logger.info("categoryId {}", categoryId);
         if (categoryId == null) {
             categoryId = categoryService.getDefaultCategoryId();
         }
@@ -49,5 +49,12 @@ public class ApiDocController {
         ApiDocModel apiDoc = apiDocService.findById(id);
         model.addAttribute("apiDoc", apiDoc);
         return "/docs/details";
+    }
+
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String displayAdd(Model model) {
+
+        return "/docs/add";
     }
 }
